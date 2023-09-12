@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>342261568928-9u7r71as6481ht8o8u73k6ov6ooqvsoo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.342261568928-9u7r71as6481ht8o8u73k6ov6ooqvsoo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDZAxwgHHB9DeRnZg-L31IKvb9g6Syedqc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>342261568928</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.goshops.multivendor</string>
+	<key>PROJECT_ID</key>
+	<string>goshops-multi-vendor-new</string>
+	<key>STORAGE_BUCKET</key>
+	<string>goshops-multi-vendor-new.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:342261568928:ios:46234e86a467c6fb7c00c5</string>
+</dict>
+</plist>
