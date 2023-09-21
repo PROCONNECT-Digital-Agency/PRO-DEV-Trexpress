@@ -40,10 +40,7 @@ class _CategoriesPageState extends ConsumerState<CategoriesPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             1.verticalSpace,
-            SearchTextField(
-              hintText: AppHelpers.getTranslation(TrKeys.search),
-              onChanged: notifier.setQuery,
-            ),
+
             1.verticalSpace,
             Expanded(
               child: state.isSearching

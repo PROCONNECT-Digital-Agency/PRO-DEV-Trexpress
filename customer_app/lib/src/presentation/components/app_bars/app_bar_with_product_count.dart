@@ -59,7 +59,7 @@ class AppBarWithProductCount extends StatelessWidget implements PreferredSize {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: 212.w,
+            width: 200.w,
             child: Text(
               title.toUpperCase(),
               maxLines: 1,

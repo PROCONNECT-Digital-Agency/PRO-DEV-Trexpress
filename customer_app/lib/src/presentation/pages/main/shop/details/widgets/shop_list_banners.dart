@@ -16,6 +16,7 @@ class ShopListBanners extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(homeBannersProvider);
     final event = ref.read(homeBannersProvider.notifier);
+
     return state.isLoading
         ? MakeShimmer(
             child: Container(

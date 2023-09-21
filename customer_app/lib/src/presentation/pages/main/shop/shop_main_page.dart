@@ -4,6 +4,9 @@ import 'dart:ui';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:g_customer/src/presentation/pages/main/shop/categories/riverpod/provider/categories_provider.dart';
+import 'package:g_customer/src/presentation/pages/main/shop/details/riverpod/provider/home_search_provider.dart';
+import 'package:g_customer/src/presentation/pages/main/shop/details/riverpod/provider/home_visible_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -95,6 +98,7 @@ class _ShopMainPageState extends ConsumerState<ShopMainPage> {
   Widget build(BuildContext context) {
     final bool isDarkMode = ref.watch(appProvider).isDarkMode;
     final bool isLtr = ref.watch(appProvider).isLtr;
+    final searchEvent = ref.read(homeSearchProvider.notifier);
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: KeyboardDismisser(
@@ -103,7 +107,8 @@ class _ShopMainPageState extends ConsumerState<ShopMainPage> {
               isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,
           extendBody: true,
           appBarBuilder: (context, tabsRouter) {
-            return tabsRouter.activeIndex == 0
+            return
+              tabsRouter.activeIndex == 0
                 ? AppBar(
                     backgroundColor: isDarkMode
                         ? AppColors.dontHaveAnAccBackDark
@@ -112,14 +117,20 @@ class _ShopMainPageState extends ConsumerState<ShopMainPage> {
                     leadingWidth: 0.r,
                     leading: const SizedBox.shrink(),
                     centerTitle: false,
-                    title: Text(
-                      '${AppHelpers.getAppName()}',
-                      style: GoogleFonts.k2d(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w500,
-                        color: isDarkMode ? AppColors.white : AppColors.black,
-                        letterSpacing: -0.7,
-                      ),
+                    title: Consumer(
+                        builder: (context ,ref, child) {
+                          final visibleState = ref.watch(homeVisibleProvider);
+                          return AnimatedContainer(
+                            height: 40,
+                            duration: const Duration(milliseconds: 300),
+                            child: SearchTextField(
+                              needShawdow: true,
+                              isVisible: true,
+                              hintText: AppHelpers.getTranslation(TrKeys.searchProducts),
+                              onChanged: searchEvent.setQuery,
+                            ),
+                          );
+                        }
                     ),
                     actions: [
                       IconButton(
@@ -143,71 +154,48 @@ class _ShopMainPageState extends ConsumerState<ShopMainPage> {
                         leadingWidth: 0.r,
                         leading: const SizedBox.shrink(),
                         centerTitle: true,
-                        title: Text(
-                          AppHelpers.getTranslation(TrKeys.categories)
-                              .toUpperCase(),
-                          style: GoogleFonts.k2d(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w500,
-                            color:
-                                isDarkMode ? AppColors.white : AppColors.black,
-                            letterSpacing: -0.7,
-                          ),
+                        title: Consumer(
+                            builder: (context ,ref, child) {
+                              final notifier = ref.read(categoriesProvider.notifier);
+                              return AnimatedContainer(
+                                height: 40,
+                                duration: const Duration(milliseconds: 300),
+                                child:  SearchTextField(
+                                  needShawdow: true,
+                                  hintText: AppHelpers.getTranslation(TrKeys.search),
+                                  onChanged: notifier.setQuery,
+                                ),
+                              );
+                            }
                         ),
                       )
                     : AppBar(
-                        backgroundColor: isDarkMode
-                            ? AppColors.dontHaveAnAccBackDark
-                            : AppColors.white,
-                        elevation: 0,
-                        leadingWidth: 0.r,
-                        leading: const SizedBox.shrink(),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              AppHelpers.getTranslation(TrKeys.likedProducts)
-                                  .toUpperCase(),
-                              style: GoogleFonts.k2d(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: -0.7,
-                                color: isDarkMode
-                                    ? AppColors.white
-                                    : AppColors.black,
-                              ),
-                            ),
-                            10.horizontalSpace,
-                            Container(
-                              width: 4.r,
-                              height: 4.r,
-                              decoration: BoxDecoration(
-                                color: isDarkMode
-                                    ? AppColors.white.withOpacity(0.5)
-                                    : AppColors.brandTitleDivider
-                                        .withOpacity(0.4),
-                                borderRadius: BorderRadius.circular(2.r),
-                              ),
-                            ),
-                            7.horizontalSpace,
-                            Text(
-                              '${LocalStorage.instance.getLikedProductsList().length} ${AppHelpers.getTranslation(TrKeys.products)}',
-                              style: GoogleFonts.k2d(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: -0.7,
-                                color: isDarkMode
-                                    ? AppColors.white
-                                    : AppColors.black,
-                              ),
-                            ),
-                          ],
+                backgroundColor: isDarkMode
+                    ? AppColors.dontHaveAnAccBackDark
+                    : AppColors.white,
+                elevation: 0,
+                leadingWidth: 0.r,
+                leading: const SizedBox.shrink(),
+                centerTitle: true,
+                title:Consumer(
+                    builder: (context ,ref, child) {
+                      final event = ref.read(likedProvider.notifier);
+                      return AnimatedContainer(
+                        height: 40,
+                        duration: const Duration(milliseconds: 300),
+                        child: SearchTextField(
+                          needShawdow: true,
+                          onChanged: event.setQuery,
+                          hintText: AppHelpers.getTranslation(TrKeys.searchProducts),
                         ),
-                        centerTitle: true,
                       );
+                    }
+                ),
+              );
           },
           routes: const [
             ShopDetailsRoute(),
+
             CategoriesRoute(),
             LikedRoute(),
           ],
@@ -333,3 +321,4 @@ class _ShopMainPageState extends ConsumerState<ShopMainPage> {
     );
   }
 }
+

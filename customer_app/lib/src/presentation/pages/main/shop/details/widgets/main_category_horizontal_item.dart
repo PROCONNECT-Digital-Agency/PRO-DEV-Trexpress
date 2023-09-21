@@ -21,7 +21,7 @@ class MainCategoryHorizontalItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isDarkMode = ref.watch(appProvider).isDarkMode;
-    final category = categoryData[6];
+    final category = categoryData[categoryData.length-1];
     return Container(
       decoration: BoxDecoration(
           color: isDarkMode ? AppColors.dontHaveAnAccBackDark : AppColors.white,

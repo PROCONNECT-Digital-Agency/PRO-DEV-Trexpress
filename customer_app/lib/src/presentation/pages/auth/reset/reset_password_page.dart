@@ -43,7 +43,7 @@ class _ResetPasswordPageState extends ConsumerState<ResetPasswordPage> {
               elevation: 0,
               centerTitle: true,
               title: Text(
-                AppHelpers.getAppName() ?? 'Go shops',
+                AppHelpers.getAppName() ?? 'TR express',
                 style: GoogleFonts.k2d(
                   fontWeight: FontWeight.w700,
                   fontSize: 14.sp,
@@ -88,7 +88,7 @@ class _ResetPasswordPageState extends ConsumerState<ResetPasswordPage> {
                         key: from,
                         child: IntlPhoneField(
                           countries: countries.map((e) {
-                            return e.code != "AM" ? e.code : "";
+                            return e.code != "AM" ? e : e;
                           }).toList(),
                           decoration: InputDecoration(
                             labelText: '',

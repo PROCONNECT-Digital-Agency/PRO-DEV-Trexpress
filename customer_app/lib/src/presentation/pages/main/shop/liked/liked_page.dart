@@ -27,7 +27,7 @@ class LikedPage extends ConsumerWidget {
           body: Consumer(
             builder: (context, ref, child) {
               final state = ref.watch(likedProvider);
-              final event = ref.read(likedProvider.notifier);
+              // final event = ref.read(likedProvider.notifier);
               return Column(
                 children: [
                   Container(
@@ -36,22 +36,22 @@ class LikedPage extends ConsumerWidget {
                         ? AppColors.mainBackDark
                         : AppColors.mainBack,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: SearchTextField(
-                          onChanged: event.setQuery,
-                          hintText:
-                              AppHelpers.getTranslation(TrKeys.searchProducts),
-                        ),
-                      ),
-                      ChangeAlignmentListButton(
-                        alignment: state.listAlignment,
-                        onChange: event.setListAlignment,
-                      ),
-                      16.horizontalSpace,
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child: SearchTextField(
+                  //         onChanged: event.setQuery,
+                  //         hintText:
+                  //             AppHelpers.getTranslation(TrKeys.searchProducts),
+                  //       ),
+                  //     ),
+                  //     ChangeAlignmentListButton(
+                  //       alignment: state.listAlignment,
+                  //       onChange: event.setListAlignment,
+                  //     ),
+                  //     16.horizontalSpace,
+                  //   ],
+                  // ),
                   Divider(
                     height: 0.r,
                     thickness: 1.r,

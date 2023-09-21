@@ -65,6 +65,7 @@ class AppColors {
   static const Color partnerChatBack = Color(0xFF1A222C);
   static const Color dragElementDark = Color(0xFFE5E5E5);
   static const Color dontHaveAnAccBackDark = Color(0xFF2B343B);
+  static const Color searchBehindColor = Color(0xFFEFF1F5);
   static const Color shimmerBaseDark = Color.fromRGBO(117, 117, 117, 0.29);
   static const Color shimmerHighlightDark = Color.fromRGBO(194, 194, 194, 0.65);
 }

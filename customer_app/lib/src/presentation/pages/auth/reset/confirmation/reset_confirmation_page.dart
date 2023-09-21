@@ -50,7 +50,7 @@ class _ResetConfirmationPageState extends ConsumerState<ResetConfirmationPage> {
               elevation: 0,
               centerTitle: true,
               title: Text(
-                AppHelpers.getAppName() ?? 'Go shops',
+                AppHelpers.getAppName() ?? 'TR express',
                 style: GoogleFonts.k2d(
                   fontWeight: FontWeight.w700,
                   fontSize: 14.sp,

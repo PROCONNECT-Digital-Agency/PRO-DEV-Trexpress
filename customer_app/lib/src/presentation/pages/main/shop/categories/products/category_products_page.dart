@@ -116,12 +116,12 @@ class _CategoryProductsPageState extends ConsumerState<CategoryProductsPage> {
               Consumer(builder: (context, ref, child) {
                 final stateVisible = ref.watch(homeVisibleProvider);
                 return AnimatedContainer(
-                    height: stateVisible.isVisible ? 0 : 50.r,
+                    height: stateVisible.isVisible ? 0 : 57.h,
                     duration: const Duration(milliseconds: 300),
                     child: Column(
                       children: [
                         Container(
-                          height: 1.r,
+                          height:1.h,
                           color: isDarkMode
                               ? AppColors.white.withOpacity(0.5)
                               : AppColors.mainBack,
@@ -131,7 +131,7 @@ class _CategoryProductsPageState extends ConsumerState<CategoryProductsPage> {
                           onChanged: notifier.setQuery,
                         ),
                         Container(
-                          height: 1.r,
+                          height: 1.h,
                           color: isDarkMode
                               ? AppColors.white.withOpacity(0.5)
                               : AppColors.mainBack,

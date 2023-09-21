@@ -509,7 +509,7 @@ class AppHelpers {
         return setting.value;
       }
     }
-    return 'GoShops';
+    return 'TR express';
   }
 
   static String getTranslation(String trKey) {

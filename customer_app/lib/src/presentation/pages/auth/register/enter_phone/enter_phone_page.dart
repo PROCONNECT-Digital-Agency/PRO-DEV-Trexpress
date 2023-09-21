@@ -95,9 +95,9 @@ class _EnterPhonePageState extends ConsumerState<EnterPhonePage> {
                         26.verticalSpace,
                         Form(
                           key: from,
-                          child: IntlPhoneField(
+                          child:IntlPhoneField(
                             countries: countries.map((e) {
-                              return e.code != "AM" ? e.code : "";
+                              return e.code != "AM" ? e : e;
                             }).toList(),
                             validator: (s) {
                               if (s?.number.isEmpty ?? true) {
